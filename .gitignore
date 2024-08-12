@@ -1,0 +1,5 @@
+my_env
+test_fe/node_modules
+test_rest_ub/api/migrations
+test_rest_ub/api/__pycache__
+

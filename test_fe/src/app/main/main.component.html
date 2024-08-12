@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row h-50">
+        <div class="col-md-12">
+            <div class="card bg-secondary mt-3 h-100">
+                <div class="card-body">
+                    <div class="row">
+                        <input [(ngModel)]="name" class="form-control" type="text" name="name" placeholder="Name">
+                    </div>
+                    <div class="row mt-3">
+                        <input [(ngModel)]="age" class="form-control" type="number" name="age" placeholder="Age">
+                    </div>
+                    <div class="row mt-3">
+                        <button class="btn btn-primary" (click)="get_id()">
+                            Get ID
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
