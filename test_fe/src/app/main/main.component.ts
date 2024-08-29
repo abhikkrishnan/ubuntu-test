@@ -30,7 +30,7 @@ export class MainComponent {
     ,error=>{
       Swal.fire({
         'icon':'error',
-        'text':'Error posting new user'
+        'text':'Error posting new user'222222
       });
     });
 
