@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ApiCallService } from '../api-call.service';
+import { error, log } from 'console';
+import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-main',
@@ -7,8 +11,14 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
+  constructor(private service:ApiCallService,private http:HttpClient){}
+
   name:String='';
   age:any;
+  obj:any;
+
+  ngOnInit(){
+  }
 
 
   get_id(){
@@ -16,8 +26,24 @@ export class MainComponent {
       name:this.name,
       age:this.age
     }
+    this.service.postservice('create_user',param).subscribe((res:any)=>{}
+    ,error=>{
+      Swal.fire({
+        'icon':'error',
+        'text':'Error posting new user'
+      });
+    });
 
-    console.log(param);
-    
+    this.service.getService('get_users').subscribe((res:any)=>{
+      console.log(res);
+    },
+    error=>{
+      Swal.fire({
+        'icon':'error',
+        'text':'Error fetching users'
+      });
+      
+    })
+
   }
 }
