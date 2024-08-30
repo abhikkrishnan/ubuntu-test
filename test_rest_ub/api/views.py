@@ -13,6 +13,10 @@ def get_user(request):
 
 @api_view(['POST'])
 def create_user(request):
+    data = request.data
+    existing_user = User.objects.filter(name=data['name'], age=data['age']).first()
+    if existing_user:
+        return Response({'error': 'User with the same details already exists', 'id': existing_user.id}, status=status.HTTP_206_PARTIAL_CONTENT)
     serializer = Userserializer(data=request.data)
     if serializer.is_valid():
         serializer.save()

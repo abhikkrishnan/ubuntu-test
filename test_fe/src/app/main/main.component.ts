@@ -16,6 +16,7 @@ export class MainComponent {
   name:String='';
   age:any;
   obj:any;
+  user_id:Number=0;
 
   ngOnInit(){
   }
@@ -26,24 +27,16 @@ export class MainComponent {
       name:this.name,
       age:this.age
     }
-    this.service.postservice('create_user',param).subscribe((res:any)=>{}
+    this.service.postservice('create_user',param).subscribe((res:any)=>{
+      console.log(res);
+      this.user_id=res.id;
+    }
     ,error=>{
       Swal.fire({
         'icon':'error',
-        'text':'Error posting new user'222222
+        'text':'Error posting new user'
       });
     });
-
-    this.service.getService('get_users').subscribe((res:any)=>{
-      console.log(res);
-    },
-    error=>{
-      Swal.fire({
-        'icon':'error',
-        'text':'Error fetching users'
-      });
-      
-    })
 
   }
 }
